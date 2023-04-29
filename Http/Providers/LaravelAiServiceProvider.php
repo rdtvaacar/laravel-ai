@@ -35,5 +35,6 @@ class LaravelAiServiceProvider extends BaseServiceProvider
         $this->publishes([
             __DIR__ . '../../resources/views' => resource_path('views/vendor/ai'),
         ]);
+        $this->loadMigrationsFrom(__DIR__.'../..//migrations');
     }
 }
