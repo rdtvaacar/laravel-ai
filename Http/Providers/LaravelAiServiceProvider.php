@@ -23,16 +23,15 @@ class LaravelAiServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../../resources/views' => resource_path('ai'),
-        ], 'ai-views');
-
-        // Bu kısım, paketin arayüzünü kullanmak için kendi route dosyanızı oluşturmanızı sağlar.
+        // Paketin rotalarını yüklemek için loadRoutesFrom() kullanıyoruz.
         $this->loadRoutesFrom(__DIR__ . '/../../routes.php');
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'ai');
-        $this->publishes([
-            __DIR__ . '/../../resources/views' => resource_path('views/vendor/ai'),
-        ]);
+
+        // Paketin migrasyonlarını yüklemek için loadMigrationsFrom() kullanıyoruz.
         $this->loadMigrationsFrom(__DIR__ . '/../../migrations');
+
+        // Paketin görünümlerine erişim sağlamak için namespace tanımlıyoruz.
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'laravel-ai');
+
     }
+
 }
