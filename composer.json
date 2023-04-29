@@ -19,7 +19,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Rdtvaacar\\LaravelAi\\": "src/"
+      "Rdtvaacar\\LaravelAi\\": "/"
     }
-  }
+  },
+  "providers": [
+    "Rdtvaacar\\LaravelAi\\Http\\Providers\\LaravelAiServiceProvider"
+  ]
 }
