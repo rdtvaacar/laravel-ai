@@ -13,9 +13,7 @@ class LaravelAiServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(FileManager::class, function () {
-            return new FileManager();
-        });
+
     }
 
     /**
@@ -26,15 +24,15 @@ class LaravelAiServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '../../resources/views' => resource_path('ai'),
+            __DIR__ . '/../../resources/views' => resource_path('ai'),
         ], 'ai-views');
 
         // Bu kısım, paketin arayüzünü kullanmak için kendi route dosyanızı oluşturmanızı sağlar.
-        $this->loadRoutesFrom(__DIR__ . '../../routes.php');
-        $this->loadViewsFrom(__DIR__ . '../../resources/views', 'ai');
+        $this->loadRoutesFrom(__DIR__ . '/../../routes.php');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'ai');
         $this->publishes([
-            __DIR__ . '../../resources/views' => resource_path('views/vendor/ai'),
+            __DIR__ . '/../../resources/views' => resource_path('views/vendor/ai'),
         ]);
-        $this->loadMigrationsFrom(__DIR__.'../..//migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../../migrations');
     }
 }
